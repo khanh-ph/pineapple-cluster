@@ -12,11 +12,11 @@ use_legacy_naming_convention = false
 ########################################################################
 # Proxmox VE API details and VM hosting configuration
 # API token guide: https://registry.terraform.io/providers/Telmate/proxmox/latest/docs
-pm_api_url          = "https://your-proxmox-url/api"
-pm_api_token_id     = "your-api-token-id"
-pm_api_token_secret = "your-api-token-secret"
-pm_tls_insecure     = false
-pm_host             = "your-proxmox-host"
+pm_api_url          = "https://xxx.xxx.xx.xx:xxxx/api2/json"
+pm_api_token_id     = "my_token"
+pm_api_token_secret = "xxxxx-xxxxxx-xxxxx"
+pm_tls_insecure     = true
+pm_host             = "proxmox_host"
 pm_parallel         = 2
 pm_timeout          = 600
 
@@ -28,10 +28,10 @@ internal_net_name = "vmbr1"
 # Internal network CIDR
 internal_net_subnet_cidr = "10.0.1.0/24"
 # Base64 encoded keys for Kubernetes admin authentication
-ssh_public_keys = "put-base64-encoded-public-keys-here"
+# ssh_public_keys = file("~/proxmox-kubernetes/ssh-keys/id_rsa.pub")
 # Caution: In production, follow https://developer.hashicorp.com/terraform/tutorials/configuration-language/sensitive-variables
 # to protect the sensitive variable `ssh_private_key` 
-ssh_private_key = "put-base64-encoded-private-key-here"
+# ssh_private_key = file("~/proxmox-kubernetes/ssh-keys/id_rsa")
 
 # Default disk storage for the VMs. Uncomment the following line if needed
 # vm_os_disk_storage = "local-lvm"

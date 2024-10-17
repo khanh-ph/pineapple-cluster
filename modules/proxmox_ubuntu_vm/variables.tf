@@ -29,10 +29,10 @@ variable "vm_net_subnet_cidr" {
   description = "Address prefix for the internal network"
 }
 
-variable "ssh_public_keys" {
-  type        = string
-  description = "SSH public keys in base64."
-}
+# variable "ssh_public_keys" {
+#   type        = string
+#   description = "SSH public keys in base64."
+# }
 
 variable "vm_onboot" {
   type        = bool

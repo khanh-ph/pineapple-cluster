@@ -69,7 +69,7 @@ module "kubespray_host" {
   vm_host_number               = 5
   vm_user                      = var.vm_user
   vm_tags                      = "${var.env_name};terraform;kubespray"
-  ssh_public_keys              = var.ssh_public_keys
+  # ssh_public_keys              = file("~/proxmox-kubernetes/ssh-keys/id_rsa.pub")
   use_legacy_naming_convention = var.use_legacy_naming_convention
 }
 
@@ -80,7 +80,7 @@ resource "null_resource" "setup_kubespray" {
   provisioner "remote-exec" {
     inline = [
       local.setup_kubespray_script_content,
-      "echo \"${var.ssh_private_key}\" | base64 -d > ${local.kubespray_data_dir}/id_rsa",
+      "echo \"${file("~/proxmox-kubernetes/ssh-keys/id_rsa")}\" | base64 -d > ${local.kubespray_data_dir}/id_rsa",
       <<-EOT
       cat <<EOF > ${local.kubespray_data_dir}/inventory.ini
       ${local.kubespray_inventory_content}
@@ -107,7 +107,7 @@ resource "null_resource" "setup_kubespray" {
   connection {
     type         = "ssh"
     user         = var.vm_user
-    private_key  = base64decode(var.ssh_private_key)
+    private_key  = base64decode(filebase64("~/proxmox-kubernetes/ssh-keys/id_rsa"))
     host         = module.kubespray_host.vm_list[0].ip0
     port         = 22
     bastion_host = var.bastion_ssh_ip

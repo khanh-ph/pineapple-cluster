@@ -69,7 +69,7 @@ resource "proxmox_vm_qemu" "ubuntu_vm" {
   ipconfig0 = "ip=${cidrhost(var.vm_net_subnet_cidr, var.vm_host_number + count.index)}${local.vm_net_subnet_mask},gw=${local.vm_net_default_gw}"
 
   ciuser  = var.vm_user
-  sshkeys = base64decode(var.ssh_public_keys)
+  sshkeys = base64decode(filebase64("~/proxmox-kubernetes/ssh-keys/id_rsa.pub"))
 
   lifecycle {
     ignore_changes = [

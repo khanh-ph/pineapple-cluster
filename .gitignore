@@ -6,6 +6,7 @@
 cloud.tf
 tmp
 *.tfvars
+.terraform.lock.hcl
 
 # Exclude example.tfvars from being ignored
 !example.tfvars
@@ -15,3 +16,4 @@ Icon*
 .DS_Store
 .env*
 
+scripts/create-vm-template-script.sh

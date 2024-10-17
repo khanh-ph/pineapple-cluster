@@ -17,7 +17,7 @@ module "k8s_control_plane_nodes" {
   vm_host_number               = 10
   vm_user                      = var.vm_user
   vm_tags                      = "${var.env_name};terraform;k8s_control_plane"
-  ssh_public_keys              = var.ssh_public_keys
+  ssh_public_keys              = file("~/proxmox-kubernetes/ssh-keys/id_rsa.pub")
   use_legacy_naming_convention = var.use_legacy_naming_convention
 }
 
@@ -40,7 +40,7 @@ module "k8s_worker_nodes" {
   vm_host_number                = 20
   vm_user                       = var.vm_user
   vm_tags                       = "${var.env_name};terraform;k8s_worker"
-  ssh_public_keys               = var.ssh_public_keys
+  ssh_public_keys               = file("~/proxmox-kubernetes/ssh-keys/id_rsa.pub")
   add_worker_node_data_disk     = var.add_worker_node_data_disk
   worker_node_data_disk_storage = var.worker_node_data_disk_storage
   worker_node_data_disk_size    = var.worker_node_data_disk_size

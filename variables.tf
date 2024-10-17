@@ -85,17 +85,17 @@ variable "internal_net_subnet_cidr" {
   default     = "10.0.1.0/24"
 }
 
-variable "ssh_private_key" {
-  type        = string
-  description = "SSH private key in base64, will be used by Terraform client to connect to the Kubespray VM after provisioning. We can set its sensitivity to false; otherwise, the output of the Kubespray script will be hidden."
-  sensitive   = false
-}
+# variable "ssh_private_key" {
+#   type        = string
+#   description = "SSH private key in base64, will be used by Terraform client to connect to the Kubespray VM after provisioning. We can set its sensitivity to false; otherwise, the output of the Kubespray script will be hidden."
+#   sensitive   = false
+# }
 
-variable "ssh_public_keys" {
-  type        = string
-  description = "SSH public keys in base64"
-  sensitive   = false
-}
+# variable "ssh_public_keys" {
+#   type        = string
+#   description = "SSH public keys in base64"
+#   sensitive   = false
+# }
 
 variable "vm_user" {
   type        = string
