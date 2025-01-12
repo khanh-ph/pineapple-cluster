@@ -11,7 +11,7 @@ terraform {
 
 resource "proxmox_vm_qemu" "ubuntu_vm" {
   count            = var.node_count
-  target_node      = var.pm_host
+  target_node      = var.pm_hosts[count.index % length(var.pm_hosts)]
   clone            = var.vm_ubuntu_tmpl_name
   qemu_os          = "l26"
   name             = var.use_legacy_naming_convention ? "${var.vm_name_prefix}-${format("%02d", count.index)}" : "${var.vm_name_prefix}-${format("%02d", count.index + 1)}"

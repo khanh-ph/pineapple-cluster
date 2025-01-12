@@ -54,9 +54,9 @@ variable "pm_tls_insecure" {
   type        = bool
   description = "Disable TLS verification while connecting to the Proxmox VE API server."
 }
-variable "pm_host" {
-  type        = string
-  description = "The name of Proxmox node where the VM is placed."
+variable "pm_hosts" {
+  type        = list(string)
+  description = "The names of Proxmox nodes where the VMs are placed."
 }
 
 variable "pm_parallel" {

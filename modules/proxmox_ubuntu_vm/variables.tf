@@ -1,6 +1,6 @@
-variable "pm_host" {
-  type        = string
-  description = "The name of Proxmox node where the VM is placed."
+variable "pm_hosts" {
+  type        = list(string)
+  description = "The names of Proxmox nodes where the VMs are placed."
 }
 
 variable "vm_name_prefix" {

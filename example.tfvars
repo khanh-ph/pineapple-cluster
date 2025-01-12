@@ -16,7 +16,7 @@ pm_api_url          = "https://your-proxmox-url/api"
 pm_api_token_id     = "your-api-token-id"
 pm_api_token_secret = "your-api-token-secret"
 pm_tls_insecure     = false
-pm_host             = "your-proxmox-host"
+pm_hosts             = ["your-proxmox-host"]
 pm_parallel         = 2
 pm_timeout          = 600
 
